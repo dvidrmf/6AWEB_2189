@@ -1,81 +1,265 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Absans', sans-serif; /* Global font family */
+  color: #F0EAD2; /* Global font color */
+}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your CV</title>
+html, body {
+  height: 100%; /* Ensure the entire document is styled */
+  background-color: #023020; /* Set the background color for the entire document */
+  color: #F0EAD2; /* Set the font color for the entire document */
+}
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@200..700&display=swap');
-  </style>
-</head>
+/* CV Container Styles */
+.cv-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 60px;
+  background-color: #023020; /* Keep the same background for the container */
+  color: #F0EAD2; /* Font color for text */
+  line-height: 1.6;
+}
 
-<div class="cv-container">
-  <header class="cv-header">
-    <h1 class="name">Ryna Mae F. David</h1>
-    <div class="contact-info">
-      <span class="contact-item">
-        <strong>Location:</strong> Sta.Teresita, Angeles City
-      </span>
-      <span class="separator">•</span>
-      <span class="contact-item">
-        <strong>Mobile:</strong> 0966 378 5048
-      </span>
-      <span class="separator">•</span>
-      <span class="contact-item">
-        <strong>E-Mail:</strong>
-        <a href="mailto:arodriguez@email.com"> dvidrmf@gmail.com</a>
-      </span>
-    </div>
-    <div class="divider"></div>
-  </header>
+/* Header Styles */
+.cv-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
 
-  <main class="cv-content">
-    <section class="profile-section">
-      <h2 class="section-title">PERSONAL PROFILE</h2>
-      <p class="profile-text">
-        Highly driven and passionate Full Stack Developer with a focus on combining creativity with robust functionality. Committed to delivering accessible and user-friendly web applications. I approach every project with a unique vision and a drive to explore and implement innovative solutions that exceed standard expectations.
-      </p>
-    </section>
+.name {
+  font-family: 'Stack Sans Headline', sans-serif; /* Apply Google Font */
+  font-size: 3.2rem; /* Larger font size for the name */
+  font-weight: 700; /* Bold the name */
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+  color: #F0EAD2; /* Font color for name */
+}
 
-    <section class="skills-section">
-      <h2 class="section-title">KEY SKILLS</h2>
-      <div class="skills-grid">
-        <div class="skills-column">
-          <ul class="skills-list">
-            <li>Frontend Development (HTML5, JavaScript)</li>
-            <li>Modern Frameworks (Angular, React, Vue.js)</li>
-            <li>Responsive & Mobile-First Design</li>
-            <li>Version Control with Git and GitHub</li>
-          </ul>
-        </div>
-        <div class="skills-column">
-          <ul class="skills-list">
-            <li>Backend Development (Node.js, Python, PHP)</li>
-            <li>Database Management (MySQL, MongoDB)</li>
-            <li>Performance Optimization and SEO</li>
-            <li>Adaptability to environment and eager to learn</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+.contact-info {
+  font-size: 0.95rem;
+  color: #F0EAD2; /* Font color for contact info */
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 
-    <section class="technical-skills">
-      <h2 class="section-title">TECHNICAL PROFICIENCIES</h2>
-      <div class="tech-categories">
-        <div class="tech-category">
-          <h3 class="category-title">Design Tools</h3>
-          <p class="tech-items">Figma, Photoshop, Illustrator</p>
-        </div>
-        <div class="tech-category">
-          <h3 class="category-title">Development</h3>
-          <p class="tech-items">TypeScript, JavaScript ES6+, Bootstrap CSS</p>
-        </div>
-        <div class="tech-category">
-          <h3 class="category-title">Tools & Platforms</h3>
-          <p class="tech-items">VS Code, W3Schools, GeeksforGeeks</p>
-        </div>
-      </div>
-    </section>
-  </main>
-</div>
-<router-outlet />
+.contact-item {
+  display: inline-block;
+}
+
+.contact-item strong {
+  font-weight: 600;
+  color: #F0EAD2; /* Font color for contact item labels */
+}
+
+.contact-item a {
+  color: #0066cc; /* Default link color */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: #004499;
+  text-decoration: underline;
+}
+
+/* Bright Orange Email Link */
+.contact-item a[href^="mailto:"] {
+  color: #FFA500; /* Bright orange color for email links */
+}
+
+.contact-item a[href^="mailto:"]:hover {
+  color: #FF7F00; /* Darker orange for hover effect */
+  text-decoration: underline;
+}
+
+.separator {
+  color: #999;
+  margin: 0 5px;
+}
+
+.divider {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #F0EAD2, transparent); /* Gradient to match theme */
+  margin-top: 20px;
+}
+
+/* Content Styles */
+.cv-content {
+  margin-top: 30px;
+}
+
+.profile-section,
+.skills-section,
+.technical-skills {
+  margin-bottom: 35px;
+}
+
+.section-title {
+  font-family: 'Stack Sans Headline', sans-serif; /* Apply Google Font */
+  font-size: 1.8rem; /* Larger font size for section titles */
+  font-weight: 700; /* Bold section titles */
+  letter-spacing: 2px;
+  color: #F0EAD2; /* Font color for section titles */
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #F0EAD2; /* Border color matching the font */
+  text-transform: uppercase;
+}
+
+/* Profile Section */
+.profile-text {
+  font-size: 1rem;
+  color: #F0EAD2; /* Font color for profile text */
+  text-align: justify;
+  line-height: 1.8;
+}
+
+/* Skills Section */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.skills-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.skills-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.skills-list li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  color: #F0EAD2; /* Font color for skills list */
+  line-height: 1.6;
+}
+
+.skills-list li::before {
+  content: "•";
+  position: absolute;
+  left: 5px;
+  color: #F0EAD2; /* Bullet color */
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Technical Skills Section */
+.tech-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.tech-category {
+  background-color: #024C3F; /* Slightly lighter shade for categories */
+  padding: 15px 20px;
+  border-radius: 5px;
+  border-left: 4px solid #F0EAD2; /* Border color matching font */
+}
+
+.category-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #F0EAD2; /* Font color for category titles */
+  margin-bottom: 8px;
+}
+
+.tech-items {
+  font-size: 0.95rem;
+  color: #F0EAD2; /* Font color for tech items */
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cv-container {
+    padding: 30px 25px;
+  }
+
+  .name {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .separator {
+    display: none;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cv-container {
+    padding: 20px 15px;
+  }
+
+  .name {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+
+  .contact-info {
+    font-size: 0.85rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+
+  .profile-text,
+  .skills-list li,
+  .tech-items {
+    font-size: 0.9rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .cv-container {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .name {
+    font-size: 2.5rem;
+  }
+
+  .section-title {
+    page-break-after: avoid;
+  }
+
+  .profile-section,
+  .skills-section,
+  .technical-skills {
+    page-break-inside: avoid;
+  }
+}
