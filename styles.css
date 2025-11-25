@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #e8f4ea;
+  min-height: 100vh;
+}
+
+body {
+  font-family: "Lexend", sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #e8f4ea;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Lexend", sans-serif;
+}
+
+p, a, span, div {
+  font-family: "Lexend", sans-serif;
+}
+
+nav {
+  background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.15);
+  letter-spacing: 0.3px;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+nav a.active {
+  background-color: white;
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+router-outlet {
+  display: block;
+}
