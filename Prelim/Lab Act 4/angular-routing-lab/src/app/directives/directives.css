@@ -1,0 +1,324 @@
+:root {
+  --cream: #FFF5E6;
+  --pink: #FFB6C1;
+  --forest-green: #228B22;
+  --orange: #FF8C42;
+  --bright-orange: #FF6B35;
+  --deep-purple: #6B46C1;
+  --sky-blue: #4A90E2;
+  --coral: #FF6F61;
+  --black: #000;
+}
+
+.directives-container {
+  min-height: 100vh;
+  background: var(--cream);
+  padding: 3rem 0;
+}
+
+.page-header {
+  text-align: center;
+  padding: 2rem 0 3rem;
+  background: var(--forest-green);
+  border: 3px solid #000;
+  margin-bottom: 0;
+}
+
+.page-header h1 {
+  color: white;
+  font-size: 3.5rem;
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: rgba(255,255,255,0.95);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.demo-section {
+  background: white;
+  border: 2px solid #000;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.demo-section.alt {
+  background: var(--pink);
+  color: #000;
+}
+
+.demo-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.note-box {
+  max-width: 650px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 3px solid #000;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.note-box.success {
+  background: var(--forest-green);
+  color: white;
+}
+
+.note-box.error {
+  background: #ff4444;
+  color: white;
+}
+
+.note-box.info {
+  background: var(--orange);
+  color: white;
+}
+
+.button-group {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background: #000;
+  color: white;
+  border: 3px solid #000;
+  padding: 1.5rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--bright-orange);
+}
+
+.btn-primary {
+  background: var(--deep-purple);
+  border-color: var(--deep-purple);
+}
+
+.btn-success {
+  background: var(--forest-green);
+  border-color: var(--forest-green);
+}
+
+.btn-info {
+  background: var(--sky-blue);
+  border-color: var(--sky-blue);
+}
+
+.btn-warning {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+.btn-danger {
+  background: #ff4444;
+  border-color: #ff4444;
+}
+
+.btn-toggle {
+  background: #000;
+  padding-right: 3rem;
+}
+
+.month-display {
+  text-align: center;
+  margin: 2rem auto;
+  max-width: 480px;
+}
+
+.month-display p {
+  background: var(--orange);
+  color: white;
+  padding: 1.6rem;
+  border: 3px solid #000;
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.input-field {
+  display: block;
+  width: 100%;
+  max-width: 550px;
+  margin: 2rem auto;
+  padding: 1rem 1.4rem;
+  border: 3px solid #000;
+  font-size: 1.1rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  background: white;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--bright-orange);
+}
+
+.city-list {
+  list-style: none;
+  max-width: 700px;
+  margin: 2.5rem auto;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.city-list li {
+  background: white;
+  padding: 1.4rem;
+  border: 3px solid #000;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.city-list li:hover {
+  background: var(--orange);
+  color: white;
+}
+
+.student-table {
+  width: 100%;
+  max-width: 1000px;
+  margin: 2.5rem auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 3px solid #000;
+  overflow: hidden;
+}
+
+.student-table thead {
+  background: #000;
+  color: white;
+}
+
+.student-table th {
+  padding: 1.2rem 1rem;
+  text-align: left;
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.student-table tbody tr {
+  border-bottom: 2px solid #000;
+  background: white;
+}
+
+.student-table tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.student-table tbody tr:hover {
+  background: var(--cream);
+}
+
+.student-table td {
+  padding: 1rem 1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.5rem 1.4rem;
+  border: 3px solid #000;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.status-badge.active {
+  background: var(--forest-green);
+  color: white;
+}
+
+.status-badge.inactive {
+  background: #666;
+  color: white;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .demo-section {
+    padding: 2rem 1rem;
+  }
+
+  .demo-section h2 {
+    font-size: 2rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    max-width: 300px;
+    margin: 2rem auto;
+  }
+
+  .btn {
+    padding: 1rem 1.8rem;
+    font-size: 1rem;
+  }
+
+  .note-box {
+    padding: 1.4rem;
+    font-size: 1rem;
+  }
+
+  .student-table {
+    font-size: 0.9rem;
+  }
+
+  .city-list li {
+    font-size: 1.05rem;
+    padding: 1rem;
+  }
+
+  .month-display p {
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .demo-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .btn {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.85rem;
+  }
+}

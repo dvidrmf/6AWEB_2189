@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+/* Tropic Bloom Color Palette */
+:root {
+  --forest-green: #134A2B;
+  --pink: #E883B9;
+  --cream: #F2ECE6;
+  --orange: #FF9E36;
+  --bright-orange: #FF6D0C;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--cream);
+  color: #000;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Navigation Bar */
+nav {
+  background: #000;
+  padding: 1.5rem 0;
+  border-bottom: 3px solid #000;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin: 0;
+}
+
+nav a {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
+  display: block;
+}
+
+nav a:hover {
+  color: var(--orange);
+}
+
+nav a:nth-child(3n+1):hover {
+  color: var(--forest-green);
+}
+
+nav a:nth-child(3n+2):hover {
+  color: var(--pink);
+}
+
+nav a:nth-child(3n):hover {
+  color: var(--bright-orange);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+/* Buttons */
+button {
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+/* Cards */
+.card {
+  background: white;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Sections */
+section {
+  padding: 4rem 0;
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mb-3 {
+  margin-bottom: 3rem;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mt-3 {
+  margin-top: 3rem;
+}
+
+/* Color Utilities */
+.bg-forest {
+  background-color: var(--forest-green);
+}
+
+.bg-pink {
+  background-color: var(--pink);
+}
+
+.bg-cream {
+  background-color: var(--cream);
+}
+
+.bg-orange {
+  background-color: var(--orange);
+}
+
+.bg-bright-orange {
+  background-color: var(--bright-orange);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--pink);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bright-orange);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 2rem;
+  }
+  
+  h1 {
+    font-size: 3rem;
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+  }
+  
+  h3 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+  
+  section {
+    padding: 3rem 0;
+  }
+
+  nav ul {
+    gap: 1.5rem;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

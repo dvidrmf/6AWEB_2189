@@ -1,0 +1,30 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <ul class="nav-links">
+      <li>
+        <a routerLink="/home" 
+           routerLinkActive="active" 
+           [routerLinkActiveOptions]="{ exact: true }">
+          Home
+        </a>
+      </li>
+      <li>
+        <a routerLink="/directives" 
+           routerLinkActive="active">
+          Directives
+        </a>
+      </li>
+      <li>
+        <a routerLink="/data-binding" 
+           routerLinkActive="active">
+          Data Binding
+        </a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+
+<main class="content">
+  <router-outlet></router-outlet>
+</main>

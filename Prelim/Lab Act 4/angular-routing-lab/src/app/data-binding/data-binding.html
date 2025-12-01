@@ -1,0 +1,50 @@
+<div class="data-binding-container">
+  <div class="page-header">
+    <h1>{{message}}</h1>
+  </div>
+
+  <div class="demo-section">
+    <h2>Interpolation & Property Binding</h2>
+    <img [src]="imageURL" [width]="150" [height]="150">
+    <p class="demo-text">Student Name: <strong>{{ yourName }}</strong></p>
+    <p class="demo-text">Score: <strong>{{ score }}</strong></p>
+  </div>
+
+  <div class="demo-section alt">
+    <h2>Style & Class Binding</h2>
+    <p class="highlight-text">{{yourName}}</p>
+    <button class="btn-toggle" (click)="togglePassing()">
+      Toggle Pass/Fail Status
+    </button>
+    <div [class]="isPassing ? 'status-box pass' : 'status-box fail'">
+      Student Result: {{ isPassing ? 'Passed' : 'Failed' }}
+    </div>
+    <button class="btn-color" (click)="changeColor()">Change Box Color</button>
+    <div class="color-box" [style.background]="boxColor" [style.width]="boxSize" [style.height]="boxSize"></div>
+  </div>
+
+  <div class="counter-section">
+    <h2>Event Binding - Interactive Counter</h2>
+    <div class="button-group">
+      <button class="btn-counter decrement" (click)="decrement()">
+        <span class="icon">−</span> Decrement
+      </button>
+      <button class="btn-counter increment" (click)="increment()">
+        <span class="icon">+</span> Increment
+      </button>
+    </div>
+    <p class="count-display">{{ count }}</p>
+    <button class="btn-reset" (click)="resetCount()">Reset Counter</button>
+  </div>
+
+  <div class="demo-section">
+    <h2>Property Binding - Disabled State</h2>
+    <img [src]="imageUrl" width="200" />
+    <div class="submit-section">
+      <button class="btn-submit" [disabled]="isDisabled">Submit Form</button>
+      <button class="btn-toggle" (click)="toggleDisabled()">
+        {{ isDisabled ? 'Enable' : 'Disable' }} Submit Button
+      </button>
+    </div>
+  </div>
+</div>
