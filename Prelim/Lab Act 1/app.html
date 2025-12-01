@@ -1,0 +1,81 @@
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your CV</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@200..700&display=swap');
+  </style>
+</head>
+
+<div class="cv-container">
+  <header class="cv-header">
+    <h1 class="name">Ryna Mae F. David</h1>
+    <div class="contact-info">
+      <span class="contact-item">
+        <strong>Location:</strong> Sta.Teresita, Angeles City
+      </span>
+      <span class="separator">•</span>
+      <span class="contact-item">
+        <strong>Mobile:</strong> 0966 378 5048
+      </span>
+      <span class="separator">•</span>
+      <span class="contact-item">
+        <strong>E-Mail:</strong>
+        <a href="mailto:arodriguez@email.com"> dvidrmf@gmail.com</a>
+      </span>
+    </div>
+    <div class="divider"></div>
+  </header>
+
+  <main class="cv-content">
+    <section class="profile-section">
+      <h2 class="section-title">PERSONAL PROFILE</h2>
+      <p class="profile-text">
+        Highly driven and passionate Full Stack Developer with a focus on combining creativity with robust functionality. Committed to delivering accessible and user-friendly web applications. I approach every project with a unique vision and a drive to explore and implement innovative solutions that exceed standard expectations.
+      </p>
+    </section>
+
+    <section class="skills-section">
+      <h2 class="section-title">KEY SKILLS</h2>
+      <div class="skills-grid">
+        <div class="skills-column">
+          <ul class="skills-list">
+            <li>Frontend Development (HTML5, JavaScript)</li>
+            <li>Modern Frameworks (Angular, React, Vue.js)</li>
+            <li>Responsive & Mobile-First Design</li>
+            <li>Version Control with Git and GitHub</li>
+          </ul>
+        </div>
+        <div class="skills-column">
+          <ul class="skills-list">
+            <li>Backend Development (Node.js, Python, PHP)</li>
+            <li>Database Management (MySQL, MongoDB)</li>
+            <li>Performance Optimization and SEO</li>
+            <li>Adaptability to environment and eager to learn</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="technical-skills">
+      <h2 class="section-title">TECHNICAL PROFICIENCIES</h2>
+      <div class="tech-categories">
+        <div class="tech-category">
+          <h3 class="category-title">Design Tools</h3>
+          <p class="tech-items">Figma, Photoshop, Illustrator</p>
+        </div>
+        <div class="tech-category">
+          <h3 class="category-title">Development</h3>
+          <p class="tech-items">TypeScript, JavaScript ES6+, Bootstrap CSS</p>
+        </div>
+        <div class="tech-category">
+          <h3 class="category-title">Tools & Platforms</h3>
+          <p class="tech-items">VS Code, W3Schools, GeeksforGeeks</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<router-outlet />
