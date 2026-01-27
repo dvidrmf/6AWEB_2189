@@ -1,0 +1,49 @@
+<div class="container">
+  <h1>User List Limited</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Website</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (user of httpusers; track user.id) {
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.website }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<div class="container" style="margin-top: 40px;">
+  <h1>Todo List Limited</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>User ID</th>
+        <th>Todo</th>
+        <th>Completed</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (todo of todos; track todo.id) {
+        <tr>
+          <td>{{ todo.id }}</td>
+          <td>{{ todo.userId }}</td>
+          <td>{{ todo.title }}</td>
+          <td>{{ todo.completed ? 'true' : 'false' }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
