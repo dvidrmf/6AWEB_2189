@@ -1,0 +1,96 @@
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: #050f1a;
+}
+
+
+/* ── Dialog panel overlay ── */
+.custom-dialog-panel .mat-mdc-dialog-container {
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.custom-dialog-panel .mdc-dialog__surface {
+  background-color: #0a1628 !important;
+  border: 1.5px solid rgba(249, 115, 22, 0.5) !important;
+  border-radius: 8px !important;
+  box-shadow:
+    0 0 30px rgba(249, 115, 22, 0.25),
+    0 0 80px rgba(249, 115, 22, 0.08) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* ── Snackbar: Success ── */
+.snack-success .mdc-snackbar__surface {
+  background-color: #0a1628 !important;
+  border: 1.5px solid #f97316 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.5) !important;
+}
+
+.snack-success .mdc-snackbar__label,
+.snack-success .mat-mdc-snack-bar-label {
+  color: #ffffff !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+}
+
+.snack-success .mat-mdc-button {
+  color: #f97316 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 700 !important;
+}
+
+/* ── Snackbar: Cancel ── */
+.snack-cancel .mdc-snackbar__surface {
+  background-color: #0a1628 !important;
+  border: 1.5px solid rgba(99, 197, 255, 0.4) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 0 12px rgba(99, 197, 255, 0.2) !important;
+}
+
+.snack-cancel .mdc-snackbar__label,
+.snack-cancel .mat-mdc-snack-bar-label {
+  color: #94a3b8 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.8rem !important;
+}
+
+.snack-cancel .mat-mdc-button {
+  color: #63c5ff !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* ── Snackbar: Error ── */
+.snack-error .mdc-snackbar__surface {
+  background-color: #0a1628 !important;
+  border: 1.5px solid rgba(239, 68, 68, 0.6) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 0 14px rgba(239, 68, 68, 0.35) !important;
+}
+
+.snack-error .mdc-snackbar__label,
+.snack-error .mat-mdc-snack-bar-label {
+  color: #fca5a5 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.8rem !important;
+}
+
+.snack-error .mat-mdc-button {
+  color: #f87171 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
