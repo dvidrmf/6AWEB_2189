@@ -1,0 +1,27 @@
+/* Global styles — Hogwarts Library Theme */
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600;900&family=Sorts+Mill+Goudy:ital@0;1&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #1a0f07;
+  font-family: 'IM Fell English', serif;
+  color: #e8c89a;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #1a0f07; }
+::-webkit-scrollbar-thumb { background: rgba(200, 149, 108, 0.25); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(212, 80, 10, 0.5); }
+
+/* Selection */
+::selection { background: rgba(212, 80, 10, 0.35); color: #fdf4e3; }

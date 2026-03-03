@@ -1,0 +1,482 @@
+<div class="library-root">
+  <div class="bg-texture"></div>
+
+  <!-- ══ HEADER ══ -->
+  <header class="library-header">
+    <div class="header-ornament">✦</div>
+    <div class="header-content">
+      <span class="header-label">BOOK COLLECTION</span>
+      <h1 class="library-title">Book Library</h1>
+      <p class="library-subtitle">Search, filter, and manage your personal book collection</p>
+    </div>
+    <div class="header-ornament">✦</div>
+  </header>
+
+  <!-- ══ TOAST ══ -->
+  @if (showToast) {
+    <div class="toast" [class]="'toast--' + toastType">
+      <span class="toast-icon">
+        @if (toastType === 'success') { ✦ }
+        @if (toastType === 'error') { ✗ }
+        @if (toastType === 'warning') { ⚠ }
+      </span>
+      {{ toastMessage }}
+    </div>
+  }
+
+  <!-- ══ MAIN LAYOUT ══ -->
+  <div class="layout-wrapper">
+
+    <!-- LEFT: Add Form -->
+    <aside class="sidebar-form">
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-trigger-label">ADD NEW BOOK</span>
+          <h2 class="panel-title">Add to Collection</h2>
+        </div>
+
+        <div class="form-rows">
+
+          <!-- Book ID — Wax Seal -->
+          <div class="form-row" [class.form-row--error]="touched['bookId'] && formErrors.bookId">
+            <div class="row-icon row-icon--id">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="11" r="5" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M10 6V4M7.5 6.8L6 5.3M12.5 6.8L14 5.3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <path d="M8 11c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2z" stroke="currentColor" stroke-width="1.1"/>
+                <path d="M7 14.5c.8.5 1.9.8 3 .8s2.2-.3 3-.8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="row-body">
+              <label class="row-label">BOOK ID <span class="req">*</span></label>
+              <input [(ngModel)]="newBook.bookId" (blur)="touch('bookId')" (input)="touch('bookId')" placeholder="e.g. BK-001" class="field-input" />
+            </div>
+            @if (touched['bookId'] && formErrors.bookId) { <span class="err-badge">!</span> }
+          </div>
+          @if (touched['bookId'] && formErrors.bookId) { <p class="err-msg">{{ formErrors.bookId }}</p> }
+
+          <!-- Title — Quill -->
+          <div class="form-row" [class.form-row--error]="touched['title'] && formErrors.title">
+            <div class="row-icon row-icon--title">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 3c-4 1-7 4-9 9l2 2c5-2 8-5 9-9z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+                <path d="M6 12l-3 5 5-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9 7c1.5 1 3 2.5 4 4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity="0.6"/>
+              </svg>
+            </div>
+            <div class="row-body">
+              <label class="row-label">BOOK TITLE <span class="req">*</span></label>
+              <input [(ngModel)]="newBook.title" (blur)="touch('title')" (input)="touch('title')" placeholder="Enter book title..." class="field-input" />
+            </div>
+            @if (touched['title'] && formErrors.title) { <span class="err-badge">!</span> }
+          </div>
+          @if (touched['title'] && formErrors.title) { <p class="err-msg">{{ formErrors.title }}</p> }
+
+          <!-- Author — Ink Bottle -->
+          <div class="form-row" [class.form-row--error]="touched['author'] && formErrors.author">
+            <div class="row-icon row-icon--author">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="9" width="10" height="8" rx="1.5" stroke="currentColor" stroke-width="1.3"/>
+                <path d="M7 9V7h6v2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8 6V4.5a2 2 0 014 0V6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M8 13h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+                <circle cx="10" cy="13" r="1" fill="currentColor" opacity="0.5"/>
+              </svg>
+            </div>
+            <div class="row-body">
+              <label class="row-label">AUTHOR <span class="req">*</span></label>
+              <input [(ngModel)]="newBook.author" (blur)="touch('author')" (input)="touch('author')" placeholder="Author's full name..." class="field-input" />
+            </div>
+            @if (touched['author'] && formErrors.author) { <span class="err-badge">!</span> }
+          </div>
+          @if (touched['author'] && formErrors.author) { <p class="err-msg">{{ formErrors.author }}</p> }
+
+          <!-- Genre — Open Book -->
+          <div class="form-row" [class.form-row--error]="touched['genre'] && formErrors.genre">
+            <div class="row-icon row-icon--genre">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 5v12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M10 6C8 5 5.5 5 3 6v9c2.5-1 5-1 7 0" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10 6c2-1 4.5-1 7 0v9c-2.5-1-5-1-7 0" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="row-body">
+              <label class="row-label">GENRE <span class="req">*</span></label>
+              <select [(ngModel)]="newBook.genre" (blur)="touch('genre')" (change)="touch('genre')" class="field-input field-select">
+                <option value="" disabled>Select a genre...</option>
+                @for (g of genres; track g) { <option [value]="g">{{ g }}</option> }
+              </select>
+            </div>
+            @if (touched['genre'] && formErrors.genre) { <span class="err-badge">!</span> }
+          </div>
+          @if (touched['genre'] && formErrors.genre) { <p class="err-msg">{{ formErrors.genre }}</p> }
+
+          <!-- Description — Scroll -->
+          <div class="form-row form-row--ta" [class.form-row--error]="touched['desc'] && formErrors.desc">
+            <div class="row-icon row-icon--desc">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 3c-1.5 0-2.5 1-2.5 2s1 2 2.5 2h9c1.5 0 2.5 1 2.5 2s-1 2-2.5 2H5c-1.5 0-2.5 1-2.5 2s1 2 2.5 2h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <path d="M6 3h9c1.5 0 2.5 1 2.5 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                <path d="M5 17c-1.5 0-2.5-1-2.5-2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="row-body">
+              <label class="row-label">DESCRIPTION <span class="req">*</span></label>
+              <textarea [(ngModel)]="newBook.desc" (blur)="touch('desc')" (input)="touch('desc')" placeholder="Brief description of the book..." class="field-input field-ta" rows="2"></textarea>
+            </div>
+            @if (touched['desc'] && formErrors.desc) { <span class="err-badge">!</span> }
+          </div>
+          @if (touched['desc'] && formErrors.desc) { <p class="err-msg">{{ formErrors.desc }}</p> }
+
+          <!-- Price + Series -->
+          <div class="form-row-split">
+            <!-- Price — Gold Coin -->
+            <div class="form-row form-row--half" [class.form-row--error]="touched['price'] && formErrors.price">
+              <div class="row-icon row-icon--price">
+                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.4"/>
+                  <circle cx="10" cy="10" r="4.5" stroke="currentColor" stroke-width="0.9" opacity="0.5"/>
+                  <path d="M10 6v2M10 12v2M8 8.5c0-.8.9-1.5 2-1.5s2 .7 2 1.5S11 10 10 10s-2 .7-2 1.5S8.9 13 10 13h1.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="row-body">
+                <label class="row-label">PRICE (PHP) <span class="req">*</span></label>
+                <input [(ngModel)]="newBook.price" (blur)="touch('price')" (input)="touch('price')" type="number" min="0" placeholder="0.00" class="field-input" />
+              </div>
+              @if (touched['price'] && formErrors.price) { <span class="err-badge">!</span> }
+            </div>
+            <!-- Series — Magic Wand -->
+            <div class="form-row form-row--half">
+              <div class="row-icon row-icon--series">
+                <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 16L13 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M13 7l1.5-1.5a1.5 1.5 0 012.1 2.1L15 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10 4l.5 1.5L12 6l-1.5.5L10 8l-.5-1.5L8 6l1.5-.5z" fill="currentColor" opacity="0.8"/>
+                  <circle cx="5" cy="15" r="0.8" fill="currentColor" opacity="0.6"/>
+                </svg>
+              </div>
+              <div class="row-body">
+                <label class="row-label">SERIES <span class="opt">(opt.)</span></label>
+                <input [(ngModel)]="newBook.series" placeholder="Series name..." class="field-input" />
+              </div>
+            </div>
+          </div>
+          @if (touched['price'] && formErrors.price) { <p class="err-msg">{{ formErrors.price }}</p> }
+
+        </div>
+
+        <button (click)="addBook()" class="add-btn">
+          <span>+</span> Add to Collection
+        </button>
+      </div>
+    </aside>
+
+    <!-- RIGHT: List + Detail -->
+    <div class="content-area" [class.content-area--split]="detailBook">
+
+      <!-- Book List Column -->
+      <div class="list-column">
+
+        <!-- Search Bar -->
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 20 20" fill="none">
+            <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <input [(ngModel)]="searchQuery" placeholder="Search by title, author, Book ID, series..." class="search-input" />
+          @if (searchQuery) {
+            <button class="search-clear" (click)="searchQuery = ''">✕</button>
+          }
+          <button class="filter-btn" (click)="showFilters = !showFilters" [class.filter-btn--on]="showFilters || activeFilterCount > 0">
+            <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
+              <path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Filters
+            @if (activeFilterCount > 0) { <span class="filter-count">{{ activeFilterCount }}</span> }
+          </button>
+        </div>
+
+        <!-- Filter Panel -->
+        @if (showFilters) {
+          <div class="filter-panel">
+            <div class="filter-panel-top">
+              <span class="filter-panel-label">Filter Options</span>
+              @if (activeFilterCount > 0) {
+                <button class="clear-btn" (click)="clearFilters()">✕ Clear all</button>
+              }
+            </div>
+            <div class="filter-grid">
+              <div class="filter-group">
+                <label class="filter-label">GENRE</label>
+                <select [(ngModel)]="filterGenre" class="filter-select">
+                  <option value="">All Genres</option>
+                  @for (g of uniqueGenresInBooks; track g) { <option [value]="g">{{ g }}</option> }
+                </select>
+              </div>
+              <div class="filter-group">
+                <label class="filter-label">MIN PRICE (₱)</label>
+                <input [(ngModel)]="filterPriceMin" type="number" min="0" placeholder="0.00" class="filter-input" />
+              </div>
+              <div class="filter-group">
+                <label class="filter-label">MAX PRICE (₱)</label>
+                <input [(ngModel)]="filterPriceMax" type="number" min="0" placeholder="∞" class="filter-input" />
+              </div>
+              <div class="filter-group">
+                <label class="filter-label">SORT BY</label>
+                <select [(ngModel)]="sortBy" class="filter-select">
+                  <option value="">Default</option>
+                  <option value="title">Title</option>
+                  <option value="author">Author</option>
+                  <option value="genre">Genre</option>
+                  <option value="price">Price</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label class="filter-label">DIRECTION</label>
+                <select [(ngModel)]="sortDir" class="filter-select">
+                  <option value="asc">Ascending ↑</option>
+                  <option value="desc">Descending ↓</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        }
+
+        <!-- List Header -->
+        <div class="list-top">
+          <div>
+            <span class="list-eyebrow">YOUR COLLECTION</span>
+            <h2 class="list-heading">All Books</h2>
+          </div>
+          <div class="list-top-right">
+            <span class="count-badge">
+              @if (filteredBooks.length !== books.length) { {{ filteredBooks.length }} / {{ books.length }} }
+              @else { {{ books.length }} book{{ books.length !== 1 ? 's' : '' }} }
+            </span>
+            <div class="sort-pills">
+              <button class="sort-pill" [class.active]="sortBy==='title'"  (click)="setSort('title')">Title{{ sortBy==='title'  ? (sortDir==='asc'?'↑':'↓') : '' }}</button>
+              <button class="sort-pill" [class.active]="sortBy==='author'" (click)="setSort('author')">Author{{ sortBy==='author' ? (sortDir==='asc'?'↑':'↓') : '' }}</button>
+              <button class="sort-pill" [class.active]="sortBy==='price'"  (click)="setSort('price')">Price{{ sortBy==='price'  ? (sortDir==='asc'?'↑':'↓') : '' }}</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Book Rows -->
+        <div class="book-list">
+          @if (filteredBooks.length === 0) {
+            <div class="empty-state">
+              <div class="empty-icon">📖</div>
+              <p class="empty-text">
+                @if (searchQuery || activeFilterCount > 0) {
+                  No books match your search or filters.
+                } @else {
+                  No books in your collection yet. Add your first one!
+                }
+              </p>
+              @if (searchQuery || activeFilterCount > 0) {
+                <button class="empty-clear" (click)="clearFilters()">Clear all filters</button>
+              }
+            </div>
+          }
+
+          @for (book of filteredBooks; track book.id) {
+            <div class="book-row" [class.book-row--active]="detailBook?.id === book.id" (click)="openDetail(book)">
+              <div class="book-spine" [class]="'spine-' + (book.id % 3)"></div>
+              <div class="book-info">
+                <div class="book-title-row">
+                  <span class="book-id">{{ book.bookId }}</span>
+                  <span class="book-title">{{ book.title }}</span>
+                  @if (book.series) { <span class="series-tag">{{ book.series }}</span> }
+                </div>
+                <div class="book-chips">
+                  <span class="chip chip--author">{{ book.author }}</span>
+                  <span class="chip chip--genre">{{ book.genre }}</span>
+                  <span class="chip chip--price">₱ {{ book.price | number:'1.2-2' }}</span>
+                </div>
+              </div>
+              <div class="book-row-actions">
+                <button (click)="openEdit(book, $event)" class="row-btn row-btn--edit" title="Edit">✎</button>
+                <button (click)="$event.stopPropagation(); deleteBook(book.id)" class="row-btn row-btn--del" title="Delete">✕</button>
+              </div>
+            </div>
+          }
+        </div>
+
+      </div>
+
+      <!-- Detail Modal (centered popup) -->
+
+    </div>
+  </div>
+
+  <!-- ══ BOOK DETAIL POPUP ══ -->
+  @if (detailBook) {
+    <div class="overlay detail-overlay" (click)="closeDetail()">
+      <div class="detail-popup" (click)="$event.stopPropagation()">
+
+        <div class="detail-popup-header">
+          <div class="detail-id-row">
+            <span class="detail-id-badge">{{ detailBook.bookId }}</span>
+            @if (detailBook.series) { <span class="detail-series-badge">{{ detailBook.series }}</span> }
+          </div>
+          <button class="detail-close" (click)="closeDetail()">✕</button>
+        </div>
+
+        <div class="detail-popup-body">
+          <h2 class="detail-title">{{ detailBook.title }}</h2>
+
+          <div class="detail-fields-grid">
+            <div class="detail-field">
+              <span class="detail-field-label">AUTHOR</span>
+              <span class="detail-field-value">{{ detailBook.author }}</span>
+            </div>
+            <div class="detail-field">
+              <span class="detail-field-label">GENRE</span>
+              <span class="detail-field-value">{{ detailBook.genre }}</span>
+            </div>
+            <div class="detail-field">
+              <span class="detail-field-label">PRICE</span>
+              <span class="detail-field-value detail-price">₱ {{ detailBook.price | number:'1.2-2' }}</span>
+            </div>
+            @if (detailBook.series) {
+              <div class="detail-field">
+                <span class="detail-field-label">SERIES</span>
+                <span class="detail-field-value">{{ detailBook.series }}</span>
+              </div>
+            }
+          </div>
+
+          <div class="detail-desc-block">
+            <span class="detail-field-label">DESCRIPTION</span>
+            <p class="detail-desc">{{ detailBook.desc }}</p>
+          </div>
+
+          @if (getRelatedBooks(detailBook).length > 0) {
+            <div class="detail-related">
+              <span class="detail-related-label">// RELATED BOOKS</span>
+              <div class="related-grid">
+                @for (b of getRelatedBooks(detailBook); track b.id) {
+                  <div class="related-card" (click)="closeDetail(); openDetail(b)">
+                    <span class="related-title">{{ b.title }}</span>
+                    <span class="related-author">{{ b.author }}</span>
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="detail-popup-footer">
+          <button class="detail-edit-btn" (click)="openEdit(detailBook, $event)">✎ Edit Book</button>
+          <button class="detail-del-btn" (click)="deleteBook(detailBook.id)">✕ Remove</button>
+        </div>
+
+      </div>
+    </div>
+  }
+
+  <!-- ══ EDIT MODAL ══ -->
+  @if (editModal.visible) {
+    <div class="overlay" (click)="closeEdit()">
+      <div class="edit-modal" (click)="$event.stopPropagation()">
+        <div class="edit-modal-header">
+          <div>
+            <span class="panel-trigger-label">EDIT BOOK</span>
+            <h3 class="edit-modal-title">Update Details</h3>
+          </div>
+          <button class="modal-close" (click)="closeEdit()">✕</button>
+        </div>
+        <div class="edit-grid">
+          <div class="edit-field">
+            <label class="row-label">BOOK ID <span class="req">*</span></label>
+            <div class="edit-wrap" [class.edit-wrap--err]="editTouched['bookId'] && editErrors.bookId">
+              <input [(ngModel)]="editForm.bookId" (blur)="touchEdit('bookId')" (input)="touchEdit('bookId')" placeholder="e.g. BK-001" class="edit-input" />
+            </div>
+            @if (editTouched['bookId'] && editErrors.bookId) { <p class="err-msg">{{ editErrors.bookId }}</p> }
+          </div>
+          <div class="edit-field edit-field--wide">
+            <label class="row-label">BOOK TITLE <span class="req">*</span></label>
+            <div class="edit-wrap" [class.edit-wrap--err]="editTouched['title'] && editErrors.title">
+              <input [(ngModel)]="editForm.title" (blur)="touchEdit('title')" (input)="touchEdit('title')" placeholder="Book title..." class="edit-input" />
+            </div>
+            @if (editTouched['title'] && editErrors.title) { <p class="err-msg">{{ editErrors.title }}</p> }
+          </div>
+          <div class="edit-field">
+            <label class="row-label">AUTHOR <span class="req">*</span></label>
+            <div class="edit-wrap" [class.edit-wrap--err]="editTouched['author'] && editErrors.author">
+              <input [(ngModel)]="editForm.author" (blur)="touchEdit('author')" (input)="touchEdit('author')" placeholder="Author name..." class="edit-input" />
+            </div>
+            @if (editTouched['author'] && editErrors.author) { <p class="err-msg">{{ editErrors.author }}</p> }
+          </div>
+          <div class="edit-field">
+            <label class="row-label">GENRE <span class="req">*</span></label>
+            <div class="edit-wrap" [class.edit-wrap--err]="editTouched['genre'] && editErrors.genre">
+              <select [(ngModel)]="editForm.genre" (blur)="touchEdit('genre')" (change)="touchEdit('genre')" class="edit-input edit-select">
+                <option value="" disabled>Select genre...</option>
+                @for (g of genres; track g) { <option [value]="g">{{ g }}</option> }
+              </select>
+            </div>
+            @if (editTouched['genre'] && editErrors.genre) { <p class="err-msg">{{ editErrors.genre }}</p> }
+          </div>
+          <div class="edit-field">
+            <label class="row-label">PRICE (PHP) <span class="req">*</span></label>
+            <div class="edit-wrap" [class.edit-wrap--err]="editTouched['price'] && editErrors.price">
+              <span class="edit-prefix">₱</span>
+              <input [(ngModel)]="editForm.price" (blur)="touchEdit('price')" (input)="touchEdit('price')" type="number" min="0" placeholder="0.00" class="edit-input edit-input--pfx" />
+            </div>
+            @if (editTouched['price'] && editErrors.price) { <p class="err-msg">{{ editErrors.price }}</p> }
+          </div>
+          <div class="edit-field">
+            <label class="row-label">SERIES <span class="opt">(optional)</span></label>
+            <div class="edit-wrap">
+              <input [(ngModel)]="editForm.series" placeholder="Series name..." class="edit-input" />
+            </div>
+          </div>
+          <div class="edit-field edit-field--full">
+            <label class="row-label">DESCRIPTION <span class="req">*</span></label>
+            <div class="edit-wrap" [class.edit-wrap--err]="editTouched['desc'] && editErrors.desc">
+              <textarea [(ngModel)]="editForm.desc" (blur)="touchEdit('desc')" (input)="touchEdit('desc')" placeholder="Brief description..." class="edit-input edit-ta" rows="3"></textarea>
+            </div>
+            @if (editTouched['desc'] && editErrors.desc) { <p class="err-msg">{{ editErrors.desc }}</p> }
+          </div>
+        </div>
+        <div class="edit-footer">
+          <button class="edit-cancel" (click)="closeEdit()">Cancel</button>
+          <button class="edit-save" (click)="saveEdit()">✓ Save Changes</button>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- ══ DUPLICATE DIALOG ══ -->
+  @if (dupDialog.visible) {
+    <div class="overlay" (click)="onDupCancel()">
+      <div class="dup-dialog" (click)="$event.stopPropagation()">
+        <div class="dup-seal">📚</div>
+        @if (dupDialog.step === 'series-question') {
+          <h3 class="dup-title">Duplicate Book Detected</h3>
+          <p class="dup-text">Your collection already has <strong>"{{ dupDialog.duplicateBook?.title }}"</strong> by <em>{{ dupDialog.duplicateBook?.author }}</em>.</p>
+          <div class="dup-question">Is this a different book in the same series?</div>
+          <div class="dup-actions">
+            <button class="dup-btn dup-btn--yes" (click)="onDupSeriesYes()">✓ Yes, add it</button>
+            <button class="dup-btn dup-btn--no"  (click)="onDupSeriesNo()">✗ No, it's different</button>
+          </div>
+          <button class="dup-cancel" (click)="onDupCancel()">Cancel</button>
+        }
+        @if (dupDialog.step === 'blocked') {
+          <h3 class="dup-title">⚠ Duplicate Entry</h3>
+          <p class="dup-text">This book already exists — same title and author, no series distinction. Please update the existing entry instead.</p>
+          <div class="dup-actions">
+            <button class="dup-btn dup-btn--yes" (click)="onDupCancel()">✓ Got it</button>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  <router-outlet />
+
+  <footer class="app-footer">
+    <span>Book Library · Personal Collection Manager · Built with Angular</span>
+  </footer>
+</div>
